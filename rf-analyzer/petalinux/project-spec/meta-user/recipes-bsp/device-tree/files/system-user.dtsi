@@ -1,0 +1,60 @@
+/include/ "system-conf.dtsi"
+/ {
+	chosen {
+		bootargs = "earlycon clk_ignore_unused root=/dev/ram rw cpuidle.off=1 console=ttyPS0,115200";
+		stdout-path = "serial0:115200n8";
+	};
+};
+
+&sdhci0 {
+//	no-1-8-v;
+	bus-width = <8>;
+	cap-mmc-highspeed;
+	mmc-hs200-1_8v;
+};
+
+&sdhci1 {
+	no-1-8-v;
+};
+
+&lmk04208_spi {
+  #address-cells = <0x1>;
+  #size-cells = <0x0>;
+  lmk04208: spi@0 {
+    compatible = "spidev";
+		reg = <0>;
+    spi-max-frequency = <6250000>;
+    /*spi-cpha; Possible property */
+    /*spi-cpol; Possible property */
+    /*spi-cs-high; Possible property */
+  };
+};
+  
+&lmx2594_spi {
+  #address-cells = <0x1>;
+  #size-cells = <0x0>;
+  plla: spi@0 {
+    compatible = "spidev";
+    reg = <0>;
+    spi-max-frequency = <6250000>;
+    /*spi-cpha; Possible property */
+    /*spi-cpol; Possible property */
+    /*spi-cs-high; Possible property */
+  };
+  pllb: spi@1 {
+    compatible = "spidev";
+    reg = <1>;
+    spi-max-frequency = <6250000>;
+    /*spi-cpha; Possible property */
+    /*spi-cpol; Possible property */
+    /*spi-cs-high; Possible property */
+  };
+  pllc: spi@2 {
+    compatible = "spidev";
+    reg = <2>;
+    spi-max-frequency = <6250000>;
+    /*spi-cpha; Possible property */
+    /*spi-cpol; Possible property */
+    /*spi-cs-high; Possible property */
+  };
+};
